@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+  <div class="card col-6 mt-3 ">
+    <p class="card-body text-center">      
+      <% if @post.image.exists?%> 
+        <%= image_tag(@post.image.url(:medium)) %><br>   
+      <% else %>
+      <% end %> 
+      <%= @post.description %>     
+    </p>  
+    <%= link_to 'Back', posts_path , class: "btn btn-dark"%>  
+  </div>
+</div>
+
+

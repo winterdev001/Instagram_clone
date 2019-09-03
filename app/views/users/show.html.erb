@@ -1,0 +1,67 @@
+<%= render 'shared/profilenav'%>
+<div class="container mt-5">
+  <div class="d-flex justify-content-center">                        
+    <div class="row d-flex mt-5 ">
+      <div class="col-2 profile-infos">
+        <%- if current_user.image.exists? %><br>
+          <%= image_tag current_user.image.url(), class: " real-prof-pic rounded-circle" %>
+        <% else%>
+          <%= image_tag("https://img.icons8.com/ultraviolet/95/000000/gender-neutral-user.png" , class: " mt-4 ml-5 avatar-profile rounded-circle")  %>      
+        <% end %>                  
+      </div>
+      <div class="col-8   profile-user-info mx-auto">
+        <span class="profile-user-names ">
+          <span class="profile-username "><%= current_user.username %></span>
+          <span><%= link_to "Edit Profile",edit_user_path(current_user.id), class:"btn edit-prof-btn ml-5"%></span>          
+          <span><%= link_to "Logout", session_path(current_user.id), method: :delete, class:"btn btn-dark ml-5"%></span><br>            
+          <strong class="mt-5"><%= current_user.fullname %> </strong>
+        </span>              
+      </div>      
+      <div class="card col-12 mt-5 mb-5">
+        <ul class="nav nav-pills mt-3  mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item bg-ig ">
+            <a class="nav-link active text-light" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My Posts</a>
+          </li>
+          <li class="nav-item bg-ig">
+            <a class="nav-link text-light " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Liked Posts</a>
+          </li>          
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card-columns profile-posts">
+              <% @post.each do |post| %>            
+                <%if post.user_id == current_user.id%>
+                  <div class="card profile-post" >
+                    <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <%= post.description%>
+                      </p>
+                    </div>
+                  </div>  
+                <%end%>
+              <%end%>            
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+             <div class="card-columns profile-posts">
+              <% @post.each do |post| %>            
+                <% if current_user.voted_up_on?(post)%>
+                  <div class="card profile-post" >
+                    <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <%= post.description%>
+                        <span class="badge badge-dark"><%= post.get_upvotes.size %> Likes</span>
+                      </p>
+                    </div>
+                  </div>  
+                <%end%>
+              <%end%>            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+</div>

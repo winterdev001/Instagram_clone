@@ -1,0 +1,15 @@
+<h1> Your Post action is complete！</h1>
+<h4>name: <%= @user.fullname %></h4>
+<h4> Confirmation of Post content </h4>      
+<div> 
+  <div class="card col-4 letter-opener-card">               
+    <h4 class="card-header">Post:</h4>
+    <div class="card-body">
+      <%- if @post.image.exists? %><br>
+      <%= image_tag @post.image.url(), class: "card-img-top" %>
+      <% end %>         
+      <%= @post.description %>
+    </div>
+  </div>
+</div>
+   

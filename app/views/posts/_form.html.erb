@@ -1,0 +1,25 @@
+<%= form_with(model: @post, local: true, html: { multipart: true }) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :description ,  class: "feed-form" , placeholder: "What's on your mind?" %>
+  </div><hr>
+  <div class="field ">
+    <%= form.file_field :image , placeholder: "Photo", class: "image-field rounded-pill" %>
+    <br>
+  </div>
+  <div class="actions">
+    <%= form.submit  class: "nav-link btn-block  rounded-pill  text-light text-center feed-submit"%>    
+  </div>
+<% end %>
+
+

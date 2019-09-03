@@ -1,0 +1,192 @@
+<%= render 'navigation'%>
+<div class="row  mt-5">        
+  <div class="col-md-5 gram">
+    <% if flash[:notice] %>
+      <div class="bg-success card col-12 mt-2 d-flex justify-content-center"   >
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="bg-danger card col-12 mt-2 d-flex justify-content-center" >
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %> 
+    <% @posts.each do |post| %>
+      <div class="card  mb-2 mt-5 feed-info">
+        <div >        
+          <div class="">                
+            <% @user.each do |user|  %>
+              <% if post.user_id == user.id %>
+                <%- if user.image.exists? %><br>
+                  <%= image_tag user.image.url(), class: "ml-3 feed-prof rounded-circle" %>
+                  <span class="ml-3 ">
+                    <%= user.fullname %>                            
+                  </span>
+                <% else%>
+                  <%=image_tag("https://img.icons8.com/ultraviolet/35/000000/gender-neutral-user.png" , class: "ml-3  mt-2 prof rounded-circle")  %> 
+                  <span class="ml-3">
+                    <%= user.fullname %>                           
+                  </span>     
+                <% end %>                                                                
+                <% if user.username == current_user.username %>
+                  <div class="dropdown dropleft ml-2 mt-1">
+                    <button class="  btn btn-light modal-trigger controls dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="modal-trigger-btn">. . .</span>
+                    </button>                
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                 
+                      <%= link_to 'Show', post ,class: "dropdown-item"%>
+                      <%= link_to 'Edit', edit_post_path(post) ,class: "dropdown-item" %>
+                      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } ,class: "dropdown-item" %>
+                    </div>
+                  </div>   
+                <% else%>
+                  <div class="dropdown ml-2 mt-1">
+                    <button class="  btn btn-light modal-trigger controls dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="modal-trigger-btn">. . .</span>
+                    </button>                 
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                 
+                      <%= link_to 'Show', post ,class: "dropdown-item"%>
+                    </div>
+                  </div>   
+                <% end %>                                  
+              <% end %>
+            <% end %> 
+          </div> 
+          <%- if post.image.exists? %><br>
+            <%= image_tag post.image.url(), class: " card-img-top " %>
+          <% else%>
+          <% end %> 
+          <div class="card-body">                
+            <div class="favorite">                    
+              <%= link_to like_post_path(post),class: "like-item", method: :put do %>  
+                <button type="button" class="btn " aria-label="Left Align">                        
+                  <span><img src="https://img.icons8.com/material-outlined/24/000000/thumb-up.png"></span>
+                </button>
+              <% end%> 
+              <%= link_to unlike_post_path(post), class: "like-item", method: :put do %>  
+                <button type="button" class="btn " aria-label="Left Align">                        
+                  <span><img src="https://img.icons8.com/material-outlined/24/000000/thumbs-down.png"></span>                                                
+                </button>
+              <% end%>                                 
+            </div>
+            <div>
+              <span class="badge badge-dark"><%= post.get_upvotes.size %> Likes</span>
+            </div>
+            <p class="">
+              <%= post.description %>
+            </p>                                    
+          </div>                                                    
+        </div>                      
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3 fixed-top stories">
+    <div class="">                        
+      <div class="row">
+        <div class="col-1">
+          <%- if current_user.image.exists? %><br>
+            <%= image_tag current_user.image.url(), class: " real-prof rounded-circle" %>
+          <% else%>
+            <%= image_tag("https://img.icons8.com/ultraviolet/35/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>      
+          <% end %>                  
+        </div>
+        <div class="col-4 ml-4 ">
+          <span class="feed-user-info ">
+            <%= current_user.username %> <br> 
+            <%= current_user.fullname %> 
+          </span>               
+        </div>
+      </div>   
+    </div>
+    <div class="card mt-3">           
+      <div class="card-body">
+        <h5 class=" lead ml-2">Stories</h5>
+        <div>
+          <div class="row">
+            <div class="col-1">
+              <%=image_tag("https://img.icons8.com/ultraviolet/40/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>
+            </div>
+            <div class="col-5 ml-4 ">
+              <span class="feed-user-info ">
+                <strong>cedjustin</strong> <br> 
+                <span>2 HOURS AGO</span> 
+              </span>               
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-1">
+              <%=image_tag("https://img.icons8.com/ultraviolet/40/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>
+            </div>
+            <div class="col-5 ml-4 ">
+              <span class="feed-user-info ">
+                <strong>J_Lo</strong> <br> 
+                <span>5 HOURS AGO</span> 
+              </span>               
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1">
+              <%=image_tag("https://img.icons8.com/ultraviolet/40/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>
+            </div>
+            <div class="col-5 ml-4 ">
+              <span class="feed-user-info ">
+                <strong>J_Lo</strong> <br> 
+                <span>5 HOURS AGO</span> 
+              </span>               
+            </div>
+          </div>                
+        </div>
+      </div>         
+    </div>
+    <div class="card mt-2">
+      <div class="card-body">
+        <h5 class=" lead ml-2">Suggestions For You</h5>
+        <div class="row">
+          <div class="col-1">
+            <%=image_tag("https://img.icons8.com/ultraviolet/40/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>
+          </div>
+          <div class="col-8 ml-4 ">
+            <span class="feed-user-info ">
+              <strong>J_Lo</strong> <span class="text-primary float-right">Follow</span><br> 
+              <span>In your contacts</span> 
+            </span>               
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer> 
+      <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="">    
+          <div class="text-center " id="navbarResponsive">
+            <ul class="navbar-nav ml-auto feed-footer ">       
+              <li class="nav-item ">
+                ABOUT US 
+              </li>
+              <li class="nav-item">
+                SUPPORT 
+              </li>
+              <li class="nav-item">
+                PRESS 
+              </li>
+              <li class="nav-item">
+                API 
+              </li>
+              <li class="nav-item">
+                JOBS 
+              </li>
+              <li class="nav-item">
+                PRIVACY 
+              </li>
+              <li class="nav-item ">
+                TERMS
+              </li>                                                  
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </footer>
+  </div>       
+</div>
+     
+
+

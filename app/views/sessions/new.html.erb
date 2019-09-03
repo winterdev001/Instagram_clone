@@ -1,0 +1,72 @@
+<div class="mt-3 login-card mb-5">  
+  <div class="card col-5 ml-5 ">
+    <h1 class="text-center">Instagram</h1>      
+    <div class="card-body">
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true,placeholder:"Email", class:"form-control" %>
+        </div>          
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", placeholder:"Password", class:"form-control" %>
+        </div>                   
+        <div class="">
+          <%= f.submit "Log in" , class:"btn btn-info login-field" %>
+        </div>          
+      <% end %>  
+      <hr>
+      <%# <p class="text-center">Forgot password?</p>       %>
+    </div>       
+    </div>
+    <div class="card col-5 mt-3 ml-5">
+      <span class="card-body text-center">
+        Don't have an account? <%= link_to "Sign up",new_user_path, class:"text-info"%>
+      </span>
+    </div>
+  </div>
+</div>
+<footer> 
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="">    
+      <div class="text-center ml-5 " id="navbarResponsive">
+        <ul class="navbar-nav ml-auto sign-up-footer ">       
+          <li class="nav-item ml-5">
+            ABOUT US
+          </li>
+          <li class="nav-item">
+            SUPPORT
+          </li>
+          <li class="nav-item">
+            PRESS
+          </li>
+          <li class="nav-item">
+            API
+          </li>
+          <li class="nav-item">
+            JOBS
+          </li>
+          <li class="nav-item">
+            PRIVACY
+          </li>
+          <li class="nav-item">
+            TERMS
+          </li>
+          <li class="nav-item">
+            DIRECTORY
+          </li>
+          <li class="nav-item">
+            PROFILES
+          </li>
+          <li class="nav-item">
+            HASHTAGS
+          </li>
+          <li class="nav-item">
+            LANGUAGE
+          </li>
+          <li class="nav-item ml-5">
+            © 2019 INSTAGRAM FROM FACEBOOK 
+          </li>                   
+        </ul>
+      </div>
+    </div>
+  </nav>
+</footer>

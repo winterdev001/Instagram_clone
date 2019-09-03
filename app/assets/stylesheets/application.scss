@@ -1,0 +1,203 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f6f6f6 !important;
+}
+
+.sign-up-body {
+  width: 90%;
+}
+
+.navbar {
+  height: 70px;
+  background-color: white
+}
+
+.nav-brand {
+  font-family: sans-serif;
+}
+
+.search-form {
+  margin-left: 10rem
+}
+
+.sign-up-img {
+  width: 480px;
+  margin-left: 13rem;
+  height: 40rem;
+}
+
+.sign-up-card {
+  margin-left: 4.5rem !important
+}
+
+.sign-up-field {
+  width: 17rem !important;
+}
+
+.login-field {
+  width: 20rem !important;
+}
+
+.sign-up-footer>.nav-item {
+  padding: .7rem;
+  font-size: 12px;
+}
+
+.feed-footer>.nav-item {
+  padding: .2rem;
+  font-size: 10px;
+}
+
+.login-card {
+  margin-left: 27rem;
+}
+
+.search {
+  height: 30px !important;
+}
+
+.feed-info {}
+
+.feed-user-info {
+  font-size: 12px;
+}
+
+.feed-controls {
+  width: 24rem !important;
+  position: relative;
+  left: 35% !important;
+}
+
+.modal-trigger {
+  background-color: transparent !important;
+  float: right;
+  border: none;
+  margin-top: -3rem !important;
+}
+
+.modal-trigger-btn {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.feed-pic {
+  width: 100%;
+}
+
+// .like-item {
+//     display: inline-block
+// }
+.before-comment {
+  border-top: 1px solid grey;
+}
+
+.stories {
+  margin-left: 50rem;
+  margin-top: 5.9rem;
+  width: 100%;
+}
+
+.gram {
+  margin-left: 15rem;
+}
+
+.post {
+  background-color: #fa5477 !important;
+}
+
+.post:hover {
+  background-color: #fa6f8d !important;
+}
+
+.feed-submit {
+  background-color: #fa5477
+}
+
+.feed-form {
+  width: 100%;
+  height: 40px;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.bg-ig {
+  background-color: #fa5477 !important
+}
+
+.prof {
+  width: 35px;
+}
+
+.real-prof {
+  width: 45px;
+  margin-top: -1.5rem !important
+}
+
+.feed-prof {
+  width: 35px;
+}
+
+.profile-infos {
+  margin-left: 10rem;
+}
+
+.profile-user-info {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  font-size: 22px;
+}
+
+.real-prof-pic {
+  width: 120px;
+}
+
+.edit-prof-btn {
+  background-color: #696464 !important;
+}
+
+.profile-post {
+  // width: 18rem !important;
+}
+
+.profile-post-pic {
+  // height: 7rem;
+  width: 100%
+}
+
+.editprof-field {
+  width: 22rem !important;
+}
+
+.letter-opener-card {
+  width: 18rem;
+}
+
+.profile-post {
+  width: 18rem !important;
+}
+
+.nav-item>.active {
+  background-color: #696464 !important
+}

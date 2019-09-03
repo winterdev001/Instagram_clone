@@ -1,0 +1,19 @@
+<%=render 'posts/navigation'%>
+<div class="col-md-3 fixed-top stories">
+  <div class="profiles">                        
+    <div class="row">
+      <div class="col-1">
+        <%- if current_user.image.exists? %><br>
+          <%= image_tag current_user.image.url(), class: " real-prof rounded-circle" %>
+        <% else%>
+          <%= image_tag("https://img.icons8.com/ultraviolet/35/000000/gender-neutral-user.png" , class: " mt-2 prof rounded-circle")  %>      
+        <% end %>                  
+      </div>
+      <div class="col-4 ml-4 ">
+        <span class="feed-user-info ">
+          <%= current_user.username %> <br> 
+          <%= current_user.fullname %> 
+        </span>               
+      </div>
+  </div>   
+</div>

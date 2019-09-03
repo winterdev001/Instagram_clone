@@ -1,0 +1,45 @@
+ <% if logged_in?%>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light  home-nav static-top fixed-top " id="navbar">
+          <div class="container">    
+            <%=link_to image_tag("https://img.icons8.com/carbon-copy/40/000000/instagram-new.png",id:"logo"), posts_url, class:"logo"%>  
+            <h2 class="nav-brand">| Instagram</h2>
+            <div class="search-form">
+              <form class="form-inline my-4 ml-0 my-lg-0 ">
+                <input class="form-control rounded-square mr-3 search text-center" type="search" placeholder="Search ..." aria-label="Search">
+              </form> 
+            </div>         
+            <div class="collapse navbar-collapse " id="navbarResponsive">
+              <ul class="navbar-nav ml-auto ">                
+                <li class="nav-item mt-1 bd">
+                  <%= link_to image_tag("https://img.icons8.com/windows/40/000000/collaborator-male.png"),user_path(current_user.id),class: "text-dark text-decoration-none ml-2" %>
+                </li> 
+                <li class="nav-item mt-1 bd">
+                  <button class= " btn post text-dark text-decoration-none ml-2" data-toggle="modal" data-target="#exampleModalScrollable">Post </button>
+                </li>                                  
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Drop a Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render 'posts/form'%>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary bg-ig" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    <% else%>
+    <% end %>
