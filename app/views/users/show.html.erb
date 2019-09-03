@@ -32,7 +32,10 @@
               <% @post.each do |post| %>            
                 <%if post.user_id == current_user.id%>
                   <div class="card profile-post" >
-                    <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <%if post.image.exists?%>
+                      <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <%else%>
+                    <%end%>
                     <div class="card-body">
                       <p class="card-text">
                         <%= post.description%>
@@ -48,7 +51,10 @@
               <% @post.each do |post| %>            
                 <% if current_user.voted_up_on?(post)%>
                   <div class="card profile-post" >
-                    <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <%if post.image.exists?%>
+                      <%= image_tag post.image.url(), class: " card-img-top profile-post-pic "%>
+                    <%else%>
+                    <%end%>
                     <div class="card-body">
                       <p class="card-text">
                         <%= post.description%>
